@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Arr;
 use App\Models\Post;
 
 
@@ -20,10 +19,10 @@ Route::get('/posts', function() {
     ]);
 });
 
-Route::get('/posts/{slug}', function($slug) {
+Route::get('/posts/{post:slug}', function(Post $post) {
     return view('post', [
         'routeTitle' => 'Single Post',
-        'post' => Post::find($slug),
+        'post' => $post,
     ]);
 });
 
